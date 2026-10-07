@@ -1,0 +1,24 @@
+# Power BI temporary/local files
+*.pbi
+*.tmp
+*.bak
+~$*
+
+# Excel temporary files
+~$*.xlsx
+~$*.xlsm
+
+# OS/editor files
+.DS_Store
+Thumbs.db
+.vscode/
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Secrets
+.env
+.env.*
