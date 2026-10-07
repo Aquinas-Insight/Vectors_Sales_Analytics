@@ -1,442 +1,515 @@
-# Vectors Sales Analytics | Power BI + Excel Business Intelligence Project
+# Vectors Sales Analytics — Business Intelligence & Statistical Analysis
 
-![Power BI](https://img.shields.io/badge/Power%20BI-Dashboard-F2C811?logo=powerbi&logoColor=black)
-![Excel](https://img.shields.io/badge/Excel-Statistical%20Analysis-217346?logo=microsoftexcel&logoColor=white)
-![Analytics](https://img.shields.io/badge/Analytics-Descriptive%20to%20Prescriptive-5B5BD6)
-![Status](https://img.shields.io/badge/Status-Portfolio%20Project-111B2F)
+![Power BI](https://img.shields.io/badge/Power%20BI-Business%20Intelligence-F2C811?logo=powerbi\&logoColor=black)
+![Excel](https://img.shields.io/badge/Excel-Statistical%20Analysis-217346?logo=microsoft-excel\&logoColor=white)
+![Analytics](https://img.shields.io/badge/Analytics-Descriptive%20%7C%20Diagnostic%20%7C%20Predictive%20%7C%20Prescriptive-4F46E5)
+![Status](https://img.shields.io/badge/Project-Portfolio-0F766E)
 
 ## Project Overview
 
-**Vectors Sales Analytics** is a business intelligence and statistical analysis project designed to transform sales data into management-ready decisions.
+**Vectors Sales Analytics** is a Business Intelligence and statistical analysis project developed to evaluate the overall performance of a sales business and translate data into actionable management decisions.
 
-The project combines:
+The project combines **Power BI** for interactive business reporting with **Excel** for statistical, mathematical, regression and scenario analysis.
 
-- **Power BI** for interactive business reporting and dashboarding
-- **Excel** for mathematical and statistical analysis
-- **Descriptive analytics** to explain what happened
-- **Diagnostic analytics** to investigate why it happened
-- **Predictive analytics** to estimate what may happen next
-- **Prescriptive analytics** to evaluate what management should do
+Rather than focusing only on reporting historical numbers, the project follows a complete analytics framework:
 
-> **Important:** This repository is intentionally documented without fabricated KPI values. Replace every `[ENTER VALUE]` placeholder with the verified value from the final analysis before publishing.
+> **Descriptive → Diagnostic → Predictive → Prescriptive**
+
+The analysis is structured around eight key business questions that management would need to answer in order to understand performance, identify the major drivers of revenue and profitability, evaluate market and customer behavior, and determine appropriate actions.
 
 ---
 
-## Business Problem
+# Business Questions
 
-A sales organization can generate large volumes of transactions without clearly understanding:
+The project answers the following eight questions:
 
-1. Which products and brands generate the most revenue?
-2. Which products combine high revenue with healthy margins?
-3. Is revenue growth driven by quantity, transactions, price/value per unit, or average order value?
-4. Which markets and payment methods contribute most to performance?
-5. How stable or volatile is sales performance?
-6. Are there unusual transactions that materially distort the results?
-7. What does the historical trend suggest about future revenue?
-8. What price, volume, or cost changes could improve revenue and profitability?
+### 1. How is the business performing overall?
 
-The objective is to move from **reporting numbers** to **explaining business performance and recommending actions**.
+This establishes the overall health of the business using key performance indicators such as:
 
----
+* Revenue
+* Gross Profit
+* Gross Margin
+* Quantity Sold
+* Transactions
+* Average Order Value (AOV)
+* Revenue per Unit
+* Profit per Unit
 
-## Key Business Questions
-
-### Performance
-- What is total revenue?
-- What is gross profit and gross margin?
-- How many units and transactions were recorded?
-- What is the average order value?
-- What is revenue per unit?
-
-### Product & Profitability
-- Which products and brands lead revenue?
-- Which products have high/low gross margins?
-- Which products fall into high-revenue/high-margin, high-revenue/low-margin, low-revenue/high-margin, and low-revenue/low-margin quadrants?
-
-### Diagnostic Analysis
-- What caused revenue to increase or decline?
-- Is performance concentrated in a small number of products, brands, or markets?
-- Are there important outliers?
-- How strongly are revenue, quantity, transactions, and profit related?
-
-### Prediction
-- What is the monthly revenue trend?
-- Is revenue accelerating or slowing?
-- What does a moving average show?
-- What does a regression/forecast indicate?
-- How accurate is the forecast?
-
-### Decision Support
-- What happens if price changes?
-- What happens if volume changes?
-- What combination of price and volume can reach a target?
-- Which action produces the strongest revenue/profit outcome?
+The objective is to establish the business baseline before investigating individual products, markets or customer behavior.
 
 ---
 
-## Technology Stack
+### 2. How have revenue and profit changed over time?
 
-| Tool | Purpose |
-|---|---|
-| Power BI | Interactive dashboard, data model, business reporting |
-| DAX | KPI and analytical measures |
-| Power Query | Data transformation and preparation |
-| Microsoft Excel | Statistical analysis, scenarios, forecasting, what-if analysis |
-| GitHub | Version control and project documentation |
-| HTML/CSS/JavaScript | Portfolio presentation |
+This evaluates business performance across time.
 
----
+The analysis examines:
 
-## Power BI Report Structure
+* Revenue by year
+* Revenue by quarter
+* Revenue by month
+* Gross profit over time
+* Gross margin over time
+* Month-over-month revenue movement
+* Revenue growth and decline periods
+* Relationship between revenue and profitability over time
 
-The supplied report contains these main report pages:
-
-### 1. Overview
-Executive-level view of sales performance.
-
-### 2. Product & Brand Performance
-Analysis of product and brand contribution and performance.
-
-### 3. Geo & Payment Method
-Analysis of geographic performance and payment-method behavior.
-
+The objective is to determine whether the business is experiencing sustained growth, stagnation, volatility or decline.
 
 ---
 
-## Data Model
+### 3. Which products are driving sales?
 
-The report is centered around the following model components:
+This question focuses on **sales contribution**.
 
-```text
+The analysis evaluates:
 
-┌─────────────┐   ┌─ ──────────────────┐   ┌─────────────┐
-│ Dim_Price   │──►│ Facts_Shoe_Sales   │◄──│ Dim_Date    |
-└─────────────┘   └────────────────────┘   └─────────────┘
+* Revenue by product
+* Quantity by product
+* Transactions by product
+* Revenue contribution %
+* Product ranking
+* Pareto concentration
 
-```
+The objective is to identify the products responsible for the largest share of sales.
 
-The business dimensions represented in the model include:
-
-- Brand
-- Category
-- Product
-- Color
-- Country
-- Payment Type
-- Product Segment
-- Company Name
-- Design
-
-Core analytical metrics include:
-
-- Revenue
-- Quantity
-- Transactions
-- Average Order Value (AOV)
-- Gross Profit
-- Gross Margin
+A product that generates high revenue is considered a major **sales driver**, but high sales alone do not necessarily mean high profitability.
 
 ---
 
-## Analytical Framework
+### 4. Which products are driving profitability?
 
-### 1. Descriptive Analytics — What happened?
+This question moves beyond revenue to evaluate **profitability quality**.
 
-The first layer establishes the size and shape of the business.
+The analysis considers:
 
-Key measures:
+* Gross Profit
+* Gross Margin %
+* Revenue
+* Profit per Unit
+* Product-level profitability
 
-- Total Revenue
-- Total Gross Profit
-- Gross Margin %
-- Total Quantity
-- Total Transactions
-- AOV
-- Revenue per Unit
-- Mean
-- Median
-- Mode
-- Range
-- Variance
-- Standard Deviation
-- Coefficient of Variation
-  
-### 2. Diagnostic Analytics — Why did it happen?
+A product profitability matrix is used to classify products into four groups:
 
-The second layer investigates the drivers.
+| Quadrant                   | Business Meaning                   | Management Focus               |
+| -------------------------- | ---------------------------------- | ------------------------------ |
+| High Revenue / High Margin | Strategic performers               | Protect and scale              |
+| High Revenue / Low Margin  | Sales leaders with margin pressure | Improve pricing/cost structure |
+| Low Revenue / High Margin  | Profit opportunities               | Increase demand                |
+| Low Revenue / Low Margin   | Weak performers                    | Review or rationalize          |
 
-Methods:
-
-- Revenue decomposition
-- Product and brand contribution
-- Pareto analysis
-- Correlation analysis
-- Outlier detection
-- Product profitability matrix
-- Country/market comparison
-- Payment-method analysis
-
-### 3. Predictive Analytics — What may happen?
-
-The third layer studies time and future performance.
-
-Methods:
-
-- Monthly revenue trend
-- Month-over-month growth
-- 3-month moving average
-- Linear trend
-- Regression
-- R²
-- Forecast.LINEAR
-- Forecast.ETS where appropriate
-- Forecast validation using MAE/MAPE
-
-### 4. Prescriptive Analytics — What should we do?
-
-The final layer converts analysis into action.
-
-Methods:
-
-- What-if analysis
-- Price scenarios
-- Volume scenarios
-- Cost scenarios
-- Goal Seek
-- Two-variable Data Tables
-- Break-even analysis
-- Target-based planning
+Median values can be used as quadrant benchmarks where the data is skewed or contains influential outliers.
 
 ---
 
-## Revenue Decomposition
+### 5. Which categories and brands perform best?
 
-Two complementary decompositions are used.
+This evaluates performance at higher business levels.
 
-### Product / pricing perspective
+The analysis compares:
+
+* Category Revenue
+* Category Gross Profit
+* Category Gross Margin
+* Brand Revenue
+* Brand Gross Profit
+* Brand Gross Margin
+* Quantity and transaction contribution
+
+The objective is to determine which categories and brands are strategically important and whether their sales performance is supported by healthy profitability.
+
+---
+
+### 6. Which countries contribute the most to the business?
+
+This evaluates geographical contribution.
+
+The analysis examines:
+
+* Revenue by country
+* Gross Profit by country
+* Gross Margin by country
+* Quantity by country
+* Transaction contribution
+* Country revenue concentration
+
+The objective is to identify the most important markets and determine whether business performance is highly dependent on a small number of countries.
+
+---
+
+### 7. What purchasing patterns can we identify from payment method and product preferences?
+
+This investigates customer purchasing behavior using available transactional dimensions.
+
+The analysis compares:
+
+* Payment Method
+* Product
+* Category
+* Brand
+* Product Segment
+* Transactions
+* Revenue
+* AOV
+
+The objective is to identify purchasing patterns and determine whether certain payment methods or product preferences are associated with particular sales behaviors.
+
+This can support decisions around:
+
+* Payment-channel optimization
+* Customer experience
+* Product positioning
+* Promotions
+* Cross-selling opportunities
+
+---
+
+### 8. What actions should management take based on the findings?
+
+The final question converts analytical findings into business decisions.
+
+Recommendations are based on evidence from:
+
+* Overall performance
+* Revenue and profit trends
+* Product sales contribution
+* Product profitability
+* Category and brand performance
+* Country contribution
+* Purchasing behavior
+* Regression analysis
+* What-if and scenario analysis
+
+The objective is not simply to describe the data, but to determine **what management should do next**.
+
+---
+
+# Four Types of Statistical/Business Analysis
+
+The project maintains four analytical levels.
+
+## 1. Descriptive Analysis — What Happened?
+
+Descriptive analysis summarizes the historical data and establishes the current state of the business.
+
+### Business applications
+
+* Overall business performance
+* Revenue and profit
+* Product performance
+* Category and brand performance
+* Country performance
+* Payment-method performance
+* Purchasing patterns
+
+### Statistical techniques
+
+**Central tendency**
+
+* Mean
+* Median
+* Mode
+
+**Dispersion**
+
+* Range
+* Variance
+* Standard Deviation
+* Coefficient of Variation
+
+**Distribution**
+
+* Quartiles
+* Interquartile Range
+* Skewness
+* Kurtosis
+
+These statistics help management understand not only the average performance but also the consistency and distribution of the business results.
+
+---
+
+# 2. Diagnostic Analysis — Why Did It Happen?
+
+Diagnostic analysis investigates the factors behind observed business performance.
+
+The analysis asks:
+
+> Why did revenue increase or decrease?
+
+> Why are some products more profitable than others?
+
+> Why does one brand outperform another?
+
+> Why is performance concentrated in certain countries?
+
+### Diagnostic techniques
+
+* Revenue decomposition
+* Product contribution analysis
+* Pareto analysis
+* Correlation analysis
+* Outlier analysis
+* Product profitability matrix
+* Segment comparison
+
+### Revenue decomposition
+
+Two complementary approaches are used.
+
+#### Product and pricing perspective
 
 **Revenue = Quantity × Revenue per Unit**
 
-This helps determine whether revenue changed because:
+This determines whether revenue changed because of:
 
-- More units were sold
-- Fewer units were sold
-- Revenue per unit increased
-- Revenue per unit decreased
-- Both volume and unit value changed
+* Changes in quantity
+* Changes in revenue per unit
+* Changes in both
 
-### Customer/order perspective
+#### Transaction and customer-value perspective
 
 **Revenue = Transactions × AOV**
 
-This helps determine whether revenue changed because:
+This determines whether revenue changed because of:
 
-- More transactions occurred
-- Fewer transactions occurred
-- Customers spent more per transaction
-- Customers spent less per transaction
+* More/fewer transactions
+* Higher/lower average order value
 
-These two views should be used together rather than treated as competing methods.
+These analyses help management identify the actual drivers behind revenue movement.
 
 ---
 
-## Product Profitability Matrix
+# 3. Predictive Analysis — What Is Likely to Happen?
 
-The recommended portfolio view uses:
+For this project, **predictive analysis is intentionally limited to regression analysis**.
 
-- **X-axis:** Revenue
-- **Y-axis:** Gross Margin %
+No separate forecasting method such as exponential smoothing or ETS is used.
 
-Median benchmarks are preferred when revenue or margin distributions are strongly skewed or contain influential outliers.
+### Regression analysis
 
-| Quadrant | Meaning | Management Response |
-|---|---|---|
-| High Revenue / High Margin | Strategic leaders | Protect, scale, prioritize inventory |
-| High Revenue / Low Margin | Revenue drivers with margin pressure | Review price, discounts, sourcing and cost |
-| Low Revenue / High Margin | Profitability opportunities | Increase visibility, distribution and demand |
-| Low Revenue / Low Margin | Weak performers | Rationalize, reposition or test selectively |
+Regression is used to examine the relationship between business variables and estimate how changes in an explanatory variable are associated with changes in a target variable.
 
----
+Possible applications include:
 
-## Statistical Risk Analysis
+* Revenue over time
+* Revenue versus quantity
+* Revenue versus transactions
+* Profit versus revenue
+* Product-level relationships
+* Other relevant business-driver relationships
 
-### Standard Deviation
+### Key regression outputs
 
-Measures the absolute spread of observations around the mean.
+* Slope
+* Intercept
+* R²
+* Predicted value
+* Regression equation
+* Residual/error analysis
 
-**Management question:** How much does performance fluctuate?
+### Business interpretation
 
-### Coefficient of Variation
+The regression model helps answer questions such as:
 
-**CV = Standard Deviation / Mean**
+> Is there a measurable relationship between sales volume and revenue?
 
-CV compares volatility relative to the average.
+> How much does revenue change as the business changes in a particular driver?
 
-**Management question:** How unstable is performance relative to its typical level?
+> How well does the explanatory variable account for changes in the outcome?
 
-### IQR and Outliers
-
-The interquartile range is:
-
-**IQR = Q3 − Q1**
-
-Outlier fences:
-
-- Lower Fence = Q1 − 1.5 × IQR
-- Upper Fence = Q3 + 1.5 × IQR
-
-Outliers should not automatically be deleted. They may represent:
-
-- Data errors
-- Large customers
-- Premium products
-- Promotions
-- Bulk purchases
-- Exceptional market events
+Regression results are interpreted as **evidence for decision-making**, not as guaranteed future outcomes.
 
 ---
 
-## Time-Series Analysis
+# 4. Prescriptive Analysis — What Should Management Do?
 
-The project evaluates monthly revenue using:
+Prescriptive analysis converts the findings into potential business actions.
 
-1. Monthly aggregation
-2. Month-over-month growth
-3. 3-month moving average
-4. Linear trend
-5. Regression slope
-6. R²
-7. Forecast
-8. Forecast error validation
+The project uses scenario-based decision analysis.
 
-A forecast is treated as a planning estimate, not a guaranteed outcome.
+### Methods include
 
----
+* What-if analysis
+* Price scenarios
+* Volume scenarios
+* Cost scenarios
+* Goal Seek
+* Two-variable Data Tables
+* Target analysis
+* Break-even analysis
 
-## Prescriptive Scenario Analysis
+### Example
 
-The scenario model allows management to test:
+Management may ask:
 
-- Price increase/decrease
-- Volume increase/decrease
-- Cost changes
-- Revenue targets
-- Gross profit targets
+> What happens to revenue and gross profit if price increases by 5% while sales volume decreases by 2%?
 
-Example scenario logic:
+The scenario analysis compares:
 
-```text
-Scenario Revenue
-= Baseline Revenue
-× (1 + Price Change)
-× (1 + Volume Change)
-```
+* Baseline revenue
+* Scenario revenue
+* Baseline gross profit
+* Scenario gross profit
+* Baseline gross margin
+* Scenario gross margin
 
-For more granular analysis, scenario revenue can be modeled from:
-
-```text
-Price × Quantity
-```
-
-The final decision should consider **revenue, gross profit, and gross margin together**.
+This allows management to evaluate a decision before implementing it.
 
 ---
 
-## Final Stakeholder Decision Framework
+# Statistical Analysis Framework
 
-Every major finding should follow:
+| Analysis     | Main Question             | Key Techniques                                      |
+| ------------ | ------------------------- | --------------------------------------------------- |
+| Descriptive  | What happened?            | Mean, Median, SD, CV, Quartiles, Skewness, Kurtosis |
+| Diagnostic   | Why did it happen?        | Decomposition, Pareto, Correlation, Outliers        |
+| Predictive   | What is likely to happen? | **Regression analysis**                             |
+| Prescriptive | What should we do?        | What-if, Goal Seek, Data Tables, Scenarios          |
+
+---
+
+# Power BI Dashboard
+
+The Power BI report provides the interactive business intelligence layer.
+
+### Main analytical areas
+
+**Overview**
+
+Provides the overall business performance view.
+
+**Product & Brand Performance**
+
+Evaluates product, category and brand contribution.
+
+**Geo & Payment Method**
+
+Evaluates country and payment-method performance.
+
+These dashboards provide the interactive foundation for the deeper statistical and decision analysis performed in Excel.
+
+---
+
+# Data Model
+
+The Power BI model is centered around:
+
+* `Facts_Shoe_Sales`
+* `Dim_Date`
+* `Dim_Price`
+* `measures_table`
+
+Business dimensions include:
+
+* Brand
+* Category
+* Product
+* Color
+* Country
+* Payment Type
+* Product Segment
+* Company Name
+* Design
+
+Core business measures include:
+
+* Revenue
+* Quantity
+* Transactions
+* AOV
+* Gross Profit
+* Gross Margin
+
+---
+
+# Business Decision Framework
+
+The project follows a simple stakeholder communication framework:
 
 > **Number → Insight → Business Impact → Action**
 
-Example:
+For example:
 
-> **Finding:** [ENTER VALUE]% of revenue comes from [ENTER PRODUCT/BRAND GROUP].  
-> **Insight:** Revenue is highly concentrated.  
-> **Business Impact:** A decline in the leading group could materially affect total revenue.  
-> **Action:** Protect availability while developing secondary revenue sources.
+**Number:** `[ENTER VERIFIED RESULT]`
 
----
+**Insight:** `[ENTER WHAT THE NUMBER MEANS]`
 
-## Results Placeholder
+**Business Impact:** `[ENTER BUSINESS CONSEQUENCE]`
 
-Replace this section after completing the final Excel analysis.
+**Action:** `[ENTER MANAGEMENT ACTION]`
 
-| KPI | Result |
-|---|---:|
-| Revenue | `[ENTER VALUE]` |
-| Gross Profit | `[ENTER VALUE]` |
-| Gross Margin | `[ENTER VALUE]%` |
-| Quantity | `[ENTER VALUE]` |
-| Transactions | `[ENTER VALUE]` |
-| AOV | `[ENTER VALUE]` |
-| Revenue / Unit | `[ENTER VALUE]` |
-| Revenue Growth | `[ENTER VALUE]%` |
-| Forecast Revenue | `[ENTER VALUE]` |
-
-### Key Findings
-
-1. **Performance:** `[ENTER VERIFIED FINDING]`
-2. **Revenue driver:** `[ENTER VERIFIED FINDING]`
-3. **Profitability:** `[ENTER VERIFIED FINDING]`
-4. **Risk/volatility:** `[ENTER VERIFIED FINDING]`
-5. **Forecast:** `[ENTER VERIFIED FINDING]`
-6. **Recommended action:** `[ENTER VERIFIED ACTION]`
+This ensures that statistical analysis does not remain a collection of formulas but becomes a business decision tool.
 
 ---
 
-## Recommended Repository Structure
+# Key Results
 
-```text
-Vectors-Sales-Analytics-Portfolio/
-│
-├── README.md
-│
-├── docs/
-│   ├── business-case.md
-│   ├── data-model.md
-│   ├── analytical-framework.md
-│   ├── statistical-analysis.md
-│   └── stakeholder-summary.md
-│
-├── powerbi/
-│   └── Vectors Sales Dashboard.pbix
-│
-├── excel/
-│   └── Vectors_Business_Statistics_Analysis.xlsx
-│
-├── portfolio/
-│   ├── index.html
-│   ├── styles.css
-│   ├── script.js
-│   └── assets/
-│
-└── .gitignore
-```
+The final verified results should be inserted below.
+
+| KPI              |           Result |
+| ---------------- | ---------------: |
+| Total Revenue    |  `[ENTER VALUE]` |
+| Gross Profit     |  `[ENTER VALUE]` |
+| Gross Margin     | `[ENTER VALUE]%` |
+| Quantity Sold    |  `[ENTER VALUE]` |
+| Transactions     |  `[ENTER VALUE]` |
+| AOV              |  `[ENTER VALUE]` |
+| Revenue per Unit |  `[ENTER VALUE]` |
+| Revenue Growth   | `[ENTER VALUE]%` |
+| Regression R²    |  `[ENTER VALUE]` |
+
+### Major Findings
+
+**Overall performance:**
+`[ENTER VERIFIED FINDING]`
+
+**Revenue trend:**
+`[ENTER VERIFIED FINDING]`
+
+**Sales-driving products:**
+`[ENTER VERIFIED FINDING]`
+
+**Profitability-driving products:**
+`[ENTER VERIFIED FINDING]`
+
+**Best categories/brands:**
+`[ENTER VERIFIED FINDING]`
+
+**Leading countries:**
+`[ENTER VERIFIED FINDING]`
+
+**Purchasing behavior:**
+`[ENTER VERIFIED FINDING]`
+
+**Regression finding:**
+`[ENTER VERIFIED FINDING]`
+
+**Management action:**
+`[ENTER VERIFIED RECOMMENDATION]`
 
 ---
 
-## Portfolio Positioning
+# Final Business Perspective
 
-This is not presented as only a dashboard project.
+The purpose of the Vectors Sales Analytics project is to move beyond:
 
-It demonstrates the complete analytics cycle:
+> **"What are our sales?"**
 
-**Data → BI Model → Descriptive Statistics → Diagnosis → Forecast → Scenario Analysis → Business Decision**
+toward:
 
-That positioning makes the project stronger for Data Analyst, Business Intelligence Analyst and Business Analytics portfolios.
+> **"What is driving our sales, where are we making money, what relationships exist in the business, and what should management do about it?"**
+
+The project therefore connects **Business Intelligence, Statistics, Regression Analysis and Decision Support** into one analytical workflow.
 
 ---
 
 ## Author
 
-**[YOUR NAME]**
+**Emekwue Thomasaquinas Obinna**
 
 Data Analyst | Business Intelligence | Power BI | Excel | Statistical Analysis
 
-- GitHub: `[YOUR GITHUB URL]`
-- Portfolio: `[YOUR PORTFOLIO URL]`
-- LinkedIn: `[YOUR LINKEDIN URL]`
-
----
+LinkedIn: `[YOUR LINKEDIN URL]`
 
 
