@@ -100,8 +100,6 @@ Analysis of product and brand contribution and performance.
 ### 3. Geo & Payment Method
 Analysis of geographic performance and payment-method behavior.
 
-### 4. Page 1
-Additional report workspace available for future analytical expansion.
 
 ---
 
@@ -110,17 +108,11 @@ Additional report workspace available for future analytical expansion.
 The report is centered around the following model components:
 
 ```text
-                 ┌─────────────┐
-                 │  Dim_Date   │
-                 └──────┬──────┘
-                        │
-                        │
-┌─────────────┐   ┌─────▼──────────────┐   ┌─────────────┐
-│ Dim_Price   │──►│ Facts_Shoe_Sales   │◄──│ Dimensions  │
+
+┌─────────────┐   ┌─ ──────────────────┐   ┌─────────────┐
+│ Dim_Price   │──►│ Facts_Shoe_Sales   │◄──│ Dim_Date    |
 └─────────────┘   └────────────────────┘   └─────────────┘
-                         │
-                         ▼
-                  measures_table
+
 ```
 
 The business dimensions represented in the model include:
@@ -168,11 +160,7 @@ Key measures:
 - Variance
 - Standard Deviation
 - Coefficient of Variation
-- Quartiles
-- IQR
-- Skewness
-- Kurtosis
-
+  
 ### 2. Diagnostic Analytics — Why did it happen?
 
 The second layer investigates the drivers.
@@ -451,6 +439,4 @@ Data Analyst | Business Intelligence | Power BI | Excel | Statistical Analysis
 
 ---
 
-## Disclaimer
 
-This is a portfolio/business analytics project. Final numerical claims should be populated only from the verified underlying dataset and validated analysis.
